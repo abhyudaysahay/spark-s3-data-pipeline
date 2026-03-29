@@ -1,0 +1,11 @@
+paths:
+  raw: s3a://de-project-raw-abhi/raw/sales.csv
+
+  staging: s3a://de-project-staging-abhi/sales/
+
+  curated:
+    sales_by_region: s3a://de-project-curated-abhi/sales_by_region/
+    sales_by_category: s3a://de-project-curated-abhi/sales_by_category/
+    monthly_sales: s3a://de-project-curated-abhi/monthly_sales/
+    top_products: s3a://de-project-curated-abhi/top_products/
+    top_customers: s3a://de-project-curated-abhi/top_customers/
