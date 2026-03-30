@@ -1,5 +1,9 @@
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 def write_parquet(df, path, mode="overwrite", partition_cols=None):
-    print(f"Writing data to {path}")
+    logger.info(f"Writing data to {path}")
 
     writer = df.write.mode(mode)
 
@@ -8,4 +12,4 @@ def write_parquet(df, path, mode="overwrite", partition_cols=None):
 
     writer.parquet(path)
 
-    print(f'data written to {path}')
+    logger.info(f'data written to {path}')

@@ -1,3 +1,7 @@
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
+
 def read_raw_data(spark, path):
     try:
         df = spark.read \
@@ -8,9 +12,9 @@ def read_raw_data(spark, path):
                 .option('multiline', 'true') \
                 .csv(path)
 
-        print(f'data ingested successfully')
+        logger.info('data ingested successfully')
 
         return df
     except Exception as e:
-        print(f'Error occured: {e}')
+        logger.error(e)
     
