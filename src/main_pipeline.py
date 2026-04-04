@@ -5,6 +5,7 @@ from staging.clean import *
 from curated.transform import *
 from utils.s3_writer import *
 from utils.logger import get_logger
+from utils.validations import validate_data
 
 
 def main():
@@ -43,6 +44,9 @@ def main():
         df_clean = clean_data(df_raw)
         logger.info('data cleaned successfully')
 
+        # validating data
+        validate_data(df_clean)
+
     # loading data to staging layer
         logger.info('loading data to staging lyer......')
         write_parquet(df_clean, config['paths']['staging'], 'overwrite', ['region'])
@@ -66,6 +70,8 @@ def main():
 
     finally:
         spark.stop()
+        logger.info('spark session stopped successfully ')
+        logger.info('pipeline completed successfully')
 
 
 if __name__ == '__main__':
